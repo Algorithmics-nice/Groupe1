@@ -49,3 +49,10 @@ class Label(Area):
       self.fill()
       mw.blit(self.image, (self.rect.x + shift_x, self.rect.y + shift_y))
 
+for i in range(num_cards):
+  new_card = Label(x, 170, 70, 100, YELLOW)
+  new_card.outline(BLUE, 10)
+  new_card.set_text('CLICK', 26)
+  cards.append(new_card)
+  x = x + 100
+
