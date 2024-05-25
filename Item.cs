@@ -70,14 +70,13 @@ for i in range(num_cards):
 
 wait = 0
 points = 0
-from random import randint
+
 while True:
-  '''Drawing cards and displaying clicks'''
   if wait == 0:
-      wait = 20 #so many ticks the label will be in one place
+      wait = 20
       click = randint(1, num_cards)
       for i in range(num_cards):
-          cards[i].color(YELLOW)
+          cards[i].color((255,255,0))
           if (i + 1) == click:
               cards[i].draw(10, 40)
           else:
