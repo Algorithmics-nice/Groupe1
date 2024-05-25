@@ -49,39 +49,34 @@ class Label(Area):
       self.fill()
       mw.blit(self.image, (self.rect.x + shift_x, self.rect.y + shift_y))
 
-RED = (255, 0, 0)
-GREEN = (0, 255, 51)
-YELLOW = (255, 255, 0)
-DARK_BLUE = (0, 0, 100)
-BLUE = (80, 80, 255)
-LIGHT_GREEN = (200, 255, 200)
-LIGHT_RED = (250, 128, 114)
-cards = []
-num_cards = 4
-x = 70
-
-       
-for i in range(num_cards):
-  new_card = Label(x, 170, 70, 100, YELLOW)
-  new_card.outline(BLUE, 10)
-  new_card.set_text('CLICK', 26)
-  cards.append(new_card)
-  x = x + 100
-
-wait = 0
-points = 0
+YELLOW=(255,255,0)
+BLUE=(80,80,255)
+card=[]
+num_card=4
+X=70
+for i in range(num_card):
+    new_card=Label(X,170,70,100,YELLOW)
+    new_card.outline(BLUE,10)
+    new_card.set_text('CLICK',26)
+    card.append(new_card)
+    X+= 100
+    
 
 while True:
-  if wait == 0:
-      wait = 20
-      click = randint(1, num_cards)
-      for i in range(num_cards):
-          cards[i].color((255,255,0))
-          if (i + 1) == click:
-              cards[i].draw(10, 40)
-          else:
-              cards[i].fill()
-  else:
-      wait -= 1
+    if wait == 0:
+        wait=20
+        click=randint(1,num_card)
+        for i in range(num_card):
+            cards[i].color((255,255,0))
+            if (i+i)==click:
+                cards(i).draw(10,40)
+            else:
+                cards[i].fill()
+    else:
+        wait-=1
 
+    for unecard in card:
+        unecard.draw(10,30) 
+    pygame.display.update()
+    clock.tick(40)
 
