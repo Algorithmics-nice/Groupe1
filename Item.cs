@@ -49,6 +49,18 @@ class Label(Area):
       self.fill()
       mw.blit(self.image, (self.rect.x + shift_x, self.rect.y + shift_y))
 
+RED = (255, 0, 0)
+GREEN = (0, 255, 51)
+YELLOW = (255, 255, 0)
+DARK_BLUE = (0, 0, 100)
+BLUE = (80, 80, 255)
+LIGHT_GREEN = (200, 255, 200)
+LIGHT_RED = (250, 128, 114)
+cards = []
+num_cards = 4
+x = 70
+
+       
 for i in range(num_cards):
   new_card = Label(x, 170, 70, 100, YELLOW)
   new_card.outline(BLUE, 10)
