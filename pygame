@@ -45,13 +45,26 @@ while True:
         wait = 20 
         click = randint(1, num_cards)
         for i in range(num_cards):
-            cards[i].color((255,255,0))
+            cards[i].color(YELLOW)
             if (i + 1) == click:
                 cards[i].draw(10, 40)
             else:
                 cards[i].fill()
     else:
         wait -= 1
- 
-  pygame.display.update()
-  clock.tick(40)
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            x, y = event.pos
+            for i in range(num_cards):
+                if cards[i].collidepoint(x,y):
+                    if i + 1 == click:
+                        cards[i].color(GREEN)
+                        points += 1
+                    else: 
+                        cards[i].color(RED)
+                        points -= 1
+                    cards[i].fill()
+                    score.set_text(str(points),40, DARK_BLUE)
+                    score.draw(0,0)
+
+    new_time = time.time()
