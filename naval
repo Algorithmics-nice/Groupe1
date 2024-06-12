@@ -1,0 +1,20 @@
+import random
+def creer_grille(taille):
+    return [['~'] * taille for _ in range(taille)]
+
+def afficher_grille(grille):
+    taille = len(grille)
+
+    print(" ", end=" ")
+    for i in range(taille):
+        print(i, end=" ")
+    print()
+
+    for i in range(taille):
+        print(i, end=" ")
+        for j in range(taille):
+            print(grille[i][j], end=" ")
+        print()
+
+a = creer_grille(5)
+afficher_grille(a)
