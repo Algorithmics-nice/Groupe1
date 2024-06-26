@@ -16,5 +16,73 @@ def afficher_grille(grille):
             print(grille[i][j], end=" ")
         print()
 
-a = creer_grille(5)
-afficher_grille(a)
+def placer_navire(grille, taille):
+    orientation = random.choice(['H', 'V'])
+    if orientation == 'H':
+        ligne = random.randint(0, len(grille) - 1)
+        col = random.randint(0, len(grille) - taille)
+        for i in range(taille):
+            grille[ligne][col + i] = 'N'
+    else:
+        ligne = random.randint(0, len(grille) - taille)
+        col = random.randint(0, len(grille) - 1)
+        for i in range(taille):
+            grille[ligne + i][col] = 'N'
+def obtenir_devine():
+    while True:
+        try:
+            devine = input("Entrez votre devinette (ligne et colonne séparées par un espace) : ").split()
+            if len(devine) != 2:
+                raise ValueError
+            ligne, col = map(int, devine)
+            if ligne < 0 or ligne >= 5 or col < 0 or col >= 5:
+                raise ValueError
+            return ligne, col
+        except ValueError:
+            print("Entrée invalide. Veuillez entrer deux nombres entre 0 et 4 séparés par un espace.")
+
+def main():
+    taille_grille = 5
+    taille_navire = 3
+
+    grille_joueur = creer_grille(taille_grille)
+    grille_ordinateur = creer_grille(taille_grille)
+
+    placer_navire(grille_ordinateur, taille_navire)
+
+    essais = 0
+    max_essais = 10
+    touches = 0
+
+    print("Bienvenue à la Bataille Navale !")
+    print("Vous avez 10 essais pour couler le navire.")
+
+    while essais < max_essais and touches < taille_navire:
+        print("\nGrille du Joueur :")
+        afficher_grille(grille_joueur)
+
+        ligne, col = obtenir_devine()
+        essais += 1
+
+        if grille_ordinateur[ligne][col] == 'N':
+            print("Touché !")
+            grille_joueur[ligne][col] = 'X'
+            touches += 1
+        else:
+            print("Manqué !")
+            grille_joueur[ligne][col] = 'O'
+
+    if touches == taille_navire:
+        print("Félicitations ! Vous avez coulé le navire !")
+    else:
+        print("Partie terminée. Bonne chance la prochaine fois !")
+
+    print("\nGrille de l'Ordinateur :")
+    afficher_grille(grille_ordinateur)
+
+
+jeu = input("Do you want to play a game ? : ")
+while jeu == "oui":
+    main()
+    jeu = input("Do you want to play again ? : ")
+
