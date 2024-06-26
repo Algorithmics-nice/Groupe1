@@ -1,20 +1,14 @@
 import random
+
+
 def creer_grille(taille):
     return [['~'] * taille for _ in range(taille)]
 
+
 def afficher_grille(grille):
-    taille = len(grille)
+    for ligne in grille:
+        print(' '.join(ligne))
 
-    print(" ", end=" ")
-    for i in range(taille):
-        print(i, end=" ")
-    print()
-
-    for i in range(taille):
-        print(i, end=" ")
-        for j in range(taille):
-            print(grille[i][j], end=" ")
-        print()
 
 def placer_navire(grille, taille):
     orientation = random.choice(['H', 'V'])
@@ -28,6 +22,8 @@ def placer_navire(grille, taille):
         col = random.randint(0, len(grille) - 1)
         for i in range(taille):
             grille[ligne + i][col] = 'N'
+
+
 def obtenir_devine():
     while True:
         try:
@@ -40,6 +36,7 @@ def obtenir_devine():
             return ligne, col
         except ValueError:
             print("Entrée invalide. Veuillez entrer deux nombres entre 0 et 4 séparés par un espace.")
+
 
 def main():
     taille_grille = 5
