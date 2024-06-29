@@ -29,32 +29,31 @@ packman = Player('hero.png', 5, hauteur_fenetre - 80, 80, 80, 0, 0)
 
 run = True
 while run:
-   time.delay(50)
-   window.fill(arriere_plan)
+    time.delay(50)
+    window.fill(arriere_plan)
   
-   for e in event.get():
-       if e.type == QUIT:
-           run = False
-       elif e.type == KEYDOWN:
-           if e.key == K_LEFT:
-               packman.x_speed = -5
-           elif e.key == K_RIGHT:
-               packman.x_speed = 5
-           elif e.key == K_UP:
-               packman.y_speed = -5
-           elif e.key == K_DOWN:
-               packman.y_speed = 5
-       elif e.type == KEYUP:
-           if e.key == K_LEFT:
-               packman.x_speed = 0
-           elif e.key == K_RIGHT:
-               packman.x_speed = 0
-           elif e.key == K_UP:
-               packman.y_speed = 0
-           elif e.key == K_DOWN:
-               packman.y_speed = 0
+    for e in event.get():
+        if e.type == QUIT:
+            run = False
+        elif e.type == KEYDOWN:
+            if e.key == K_LEFT:
+                packman.x_speed = -5
+            elif e.key == K_RIGHT:
+                packman.x_speed = 5
+            elif e.key == K_UP:
+                packman.y_speed = -5
+            elif e.key == K_DOWN:
+                packman.y_speed = 5
+        elif e.type == KEYUP:
+            if e.key == K_LEFT:
+                packman.x_speed = 0
+            elif e.key == K_RIGHT:
+                packman.x_speed = 0
+            elif e.key == K_UP:
+                packman.y_speed = 0
+            elif e.key == K_DOWN:
+                packman.y_speed = 0
 
    packman.reset()
    packman.update()
    display.update()
-
