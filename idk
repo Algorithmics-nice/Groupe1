@@ -1,0 +1,13 @@
+print('What is the highest mountain in the world?')
+
+while True:
+    answer = input('1 - Mount Elbrus, 2 - Mauna Loa, 3 - Mount Everest, 4 - Denali')
+    try:
+        answer = int(answer)
+        break
+    except:
+        print("Error! Enter the number of the correct answer")
+if answer == 3:
+    print("That's right!")
+else:
+    print('No. Mount Everest, 8,848 meters')
